@@ -1,0 +1,8 @@
+/vendor/
+/.env
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db

@@ -1,0 +1,21 @@
+---
+Name: obj63mc-mysqlisslconnector
+Only:
+  envvarset: SSL_CA_FILENAME
+After:
+  - '#databaseconnecters'
+---
+SilverStripe\Core\Injector\Injector:
+  MySQLDatabase:
+    class: 'SilverStripe\ORM\Connect\MySQLDatabase'
+    properties:
+      connector: '%$MySQLiSSLConnector'
+      schemaManager: '%$MySQLSchemaManager'
+      queryBuilder: '%$MySQLQueryBuilder'
+  MySQLiSSLConnector:
+    class: 'Obj63mc\ORM\Connect\MySQLiSSLConnector'
+    type: prototype
+  MySQLSchemaManager:
+    class: 'SilverStripe\ORM\Connect\MySQLSchemaManager'
+  MySQLQueryBuilder:
+    class: 'SilverStripe\ORM\Connect\MySQLQueryBuilder'

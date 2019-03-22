@@ -1,0 +1,21 @@
+{
+    "name": "obj63mc/silverstripe-mysqlisslconnector",
+    "description": "SilverStripe module to allow MySQLi SSL connection with CA certificate only",
+    "type": "silverstripe-vendormodule",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joe Madden",
+            "email": "obj63mc@gmail.com"
+        }
+    ],
+    "require": {
+        "silverstripe/framework": "^4.3",
+        "silverstripe/vendor-plugin": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Obj63mc\\ORM\\": "src"
+        }
+    }
+}
