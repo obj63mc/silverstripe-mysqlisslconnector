@@ -11,6 +11,10 @@ class MySQLiSSLConnector extends MySQLiConnector
 
     public function connect($parameters, $selectDB = false)
     {
+		$documentRoot = $_SERVER['DOCUMENT_ROOT'];
+        if(!$documentRoot){
+            $documentRoot = '.';
+        }
         // Normally $selectDB is set to false by the MySQLDatabase controller, as per convention
         $selectedDB = ($selectDB && !empty($parameters['database'])) ? $parameters['database'] : null;
 
@@ -22,7 +26,7 @@ class MySQLiSSLConnector extends MySQLiConnector
 
         //Custom SSL Config for RDS PEM only.
         $this->dbConn->options(MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, true);
-        $this->dbConn->ssl_set(NULL, NULL, $_SERVER['DOCUMENT_ROOT'].'/'.Environment::getEnv('SSL_CA_FILENAME'), NULL, NULL);
+        $this->dbConn->ssl_set(NULL, NULL, $documentRoot.'/'.Environment::getEnv('SSL_CA_FILENAME'), NULL, NULL);
 
         $this->dbConn->real_connect(
             $parameters['server'],
