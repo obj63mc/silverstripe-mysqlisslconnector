@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Obj63mc\\ORM\\": "src"
+            "Obj63mc\\ORM\\": "src/"
         }
     }
 }
