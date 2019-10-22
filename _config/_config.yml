@@ -3,7 +3,7 @@ Name: obj63mc-mysqlisslconnector
 Only:
   envvarset: SSL_CA_FILENAME
 After:
-  - '#databaseconnecters'
+  - '#databaseconnectors'
 ---
 SilverStripe\Core\Injector\Injector:
   MySQLDatabase:
