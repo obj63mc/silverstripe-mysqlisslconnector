@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "silverstripe/framework": "^4.3",
+        "silverstripe/framework": "^4.3 || ^5",
         "silverstripe/vendor-plugin": "^1.0"
     },
     "autoload": {
