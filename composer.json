@@ -11,7 +11,7 @@
     ],
     "require": {
         "silverstripe/framework": "^4.3 || ^5",
-        "silverstripe/vendor-plugin": "^1.0"
+        "silverstripe/vendor-plugin": "^1.0 || ^2"
     },
     "autoload": {
         "psr-4": {
