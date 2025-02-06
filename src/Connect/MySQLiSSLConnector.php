@@ -11,7 +11,7 @@ class MySQLiSSLConnector extends MySQLiConnector
 
     public function connect($parameters, $selectDB = false)
     {
-        if(Environment::get('SSL_CA_FILEROOT')){
+        if(Environment::getEnv('SSL_CA_FILEROOT')){
             $documentRoot = Environment::getEnv('SSL_CA_FILEROOT');
         } else {
             $documentRoot = $_SERVER['DOCUMENT_ROOT'];
