@@ -1,19 +1,23 @@
 <?php
 namespace Obj63mc\ORM\Connect;
 
-use SilverStripe\ORM\Connect\MySQLiConnector;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Environment;
 use SilverStripe\ORM\Connect\MySQLDatabase;
+use SilverStripe\ORM\Connect\MySQLiConnector;
 
 class MySQLiSSLConnector extends MySQLiConnector
 {
 
     public function connect($parameters, $selectDB = false)
     {
-		$documentRoot = $_SERVER['DOCUMENT_ROOT'];
-        if(!$documentRoot){
-            $documentRoot = '.';
+        if(Environment::get('SSL_CA_FILEROOT')){
+            $documentRoot = Environment::get('SSL_CA_FILEROOT');
+        } else {
+            $documentRoot = $_SERVER['DOCUMENT_ROOT'];
+            if(!$documentRoot){
+                $documentRoot = '.';
+            }
         }
         // Normally $selectDB is set to false by the MySQLDatabase controller, as per convention
         $selectedDB = ($selectDB && !empty($parameters['database'])) ? $parameters['database'] : null;
@@ -42,16 +46,16 @@ class MySQLiSSLConnector extends MySQLiConnector
 
         // Set charset and collation if given and not null. Can explicitly set to empty string to omit
         $charset = isset($parameters['charset'])
-                ? $parameters['charset']
-                : $connCharset;
+        ? $parameters['charset']
+        : $connCharset;
 
         if (!empty($charset)) {
             $this->dbConn->set_charset($charset);
         }
 
         $collation = isset($parameters['collation'])
-            ? $parameters['collation']
-            : $connCollation;
+        ? $parameters['collation']
+        : $connCollation;
 
         if (!empty($collation)) {
             $this->dbConn->query("SET collation_connection = {$collation}");
